@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Caesar Cipher Tool</title>
+</head>
+<body>
+    <h1>Caesar Cipher Encryption & Decryption</h1>
+    
+    <!-- Encryption Form -->
+    <form action="/" method="post">
+        <input type="text" name="plaintext" placeholder="Enter text to encrypt">
+        <input type="number" name="shift" placeholder="Enter shift key">
+        <button type="submit" name="encrypt">Encrypt</button>
+    </form>
+    
+    <!-- Decryption Form -->
+    <form action="/" method="post">
+        <input type="text" name="ciphertext" placeholder="Enter text to decrypt">
+        <button type="submit" name="decrypt">Decrypt</button>
+    </form>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+        <title>Caesar Cipher Tool</title>
+    </head>
+    <!-- Display Results -->
+    {% if encrypted_message %}
+        <h2>Encrypted Text:</h2>
+        <p>{{ encrypted_message }}</p>
+    {% endif %}
+    {% if decrypted_results %}
+        <h2>Decrypted Texts:</h2>
+        <ul>
+            {% for result in decrypted_results %}
+                <li>Shift {{ result[0] }}: {{ result[1] }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
